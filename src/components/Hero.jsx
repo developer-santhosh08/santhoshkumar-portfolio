@@ -17,8 +17,8 @@ const Hero = () => {
     if (!el.current) return;
 
     const typed = new Typed(el.current, {
-      strings: ['web apps for real-world business needs'],
-      typeSpeed: 80,
+      strings: ['a Full Stack Developer'],
+      typeSpeed: 50,
       backSpeed: 50,
       loop: true,
       backDelay: 1500,
@@ -104,33 +104,28 @@ const Hero = () => {
                 delay={0.3}
                 stagger={0.06}
               />
-              <div className="overflow-hidden w-full mt-4">
-                <motion.div 
-                  variants={textVariants}
-                  className="flex justify-start"
+              <div className="overflow-hidden w-full flex justify-center mt-2">
+                <motion.h2 
+                  initial={typeof window !== 'undefined' && window.innerWidth < 576 ? { opacity: 0, y: 0 } : "hidden"}
+                  whileInView={typeof window !== 'undefined' && window.innerWidth < 576 ? { opacity: 1, y: 0 } : "visible"}
+                  animate={typeof window !== 'undefined' && window.innerWidth < 576 ? {
+                    x: ["25%", "-25%"],
+                    transition: { 
+                      duration: 8, 
+                      repeat: Infinity, 
+                      repeatType: "reverse", 
+                      ease: "linear",
+                      opacity: { duration: 1 }
+                    }
+                  } : {}}
+                  className="hero-typed-modern text-[0.8rem] sm:text-[1.6rem] md:text-[2.2rem] whitespace-nowrap"
                 >
-                  <motion.h2 
-                    animate={typeof window !== 'undefined' && window.innerWidth < 576 ? {
-                      x: ["0%", "-50%"],
-                      transition: { 
-                        duration: 15, 
-                        repeat: Infinity, 
-                        repeatType: "loop", 
-                        ease: "linear"
-                      }
-                    } : {}}
-                    className="hero-typed-modern text-[0.8rem] sm:text-[1.6rem] md:text-[2.2rem] max-w-none leading-tight sm:whitespace-normal whitespace-nowrap w-max"
-                  >
-                    {typeof window !== 'undefined' && window.innerWidth < 576 ? (
-                      <div className="flex gap-8">
-                        <span>Building high-performance <span className="text-[var(--accent-color)]">web apps for real-world business needs</span></span>
-                        <span>Building high-performance <span className="text-[var(--accent-color)]">web apps for real-world business needs</span></span>
-                      </div>
-                    ) : (
-                      <>Building high-performance <br className="hidden sm:block" /> <span ref={el} className="typed text-[var(--accent-color)]"></span></>
-                    )}
-                  </motion.h2>
-                </motion.div>
+                  {typeof window !== 'undefined' && window.innerWidth < 576 ? (
+                    <>I'm <span className="text-[var(--accent-color)]">a Full Stack Developer</span></>
+                  ) : (
+                    <>I'm <span ref={el} className="typed text-[var(--accent-color)]"></span></>
+                  )}
+                </motion.h2>
               </div>
 
               <motion.ul variants={textVariants} className="hero-social-modern justify-content-center mt-6 mb-8">
