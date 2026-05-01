@@ -98,7 +98,7 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
               borderRadius: '20px',
               textDecoration: 'none'
             }}>
-              <span>Let’s Craft</span>
+              <span>Let’s Craft </span>
               <PaperPlaneTilt size={18} weight="bold" />
             </a>
           </div>
