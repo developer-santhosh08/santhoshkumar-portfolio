@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import TextReveal from './TextReveal';
@@ -14,6 +15,7 @@ import {
 } from '@phosphor-icons/react';
 
 const ProjectCard = ({ project, onClick }) => {
+  const { t } = useLanguage();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -80,7 +82,7 @@ const ProjectCard = ({ project, onClick }) => {
           <div className="project-actions">
             <button className="preview-trigger-btn">
               <Monitor size={18} weight="bold" />
-              <span>Live Preview</span>
+              <span>{t('livePreview')}</span>
             </button>
             <a
               href={project.url}
@@ -102,6 +104,7 @@ const ProjectCard = ({ project, onClick }) => {
 };
 
 const Portfolio = () => {
+  const { t } = useLanguage();
   const [filter, setFilter] = useState('*');
   const [selectedProject, setSelectedProject] = useState(null);
   const [isIframeLoading, setIsIframeLoading] = useState(true);
@@ -116,10 +119,10 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: 'GYM Management ERP',
-      sub:'A complete system to manage memberships, billing, and daily operations.',
+      title: t('proj1_title'),
+      sub: t('proj1_desc'),
       category: 'erp',
-      categoryLabel: 'ERP System',
+      categoryLabel: t('proj1_label'),
       url: 'https://erp.macawfit.com/',
       image: '/img/projects/gym_erp.png',
       tags: ['PHP', 'CakePHP', 'MySQL'],
@@ -127,9 +130,9 @@ const Portfolio = () => {
     },
     {
       id: 2,
-      title: 'Themistor ERP System',
+      title: t('proj2_title'),
       category: 'erp',
-      categoryLabel: 'Enterprise ERP',
+      categoryLabel: t('proj2_label'),
       url: 'https://erp.thermosen.in/',
       image: '/img/projects/thermistor.png',
       tags: ['PHP', 'MySQL', 'CodeIgniter4' ,'Architecture Design'],
@@ -137,9 +140,9 @@ const Portfolio = () => {
     },
     {
       id: 3,
-      title: 'UPVC Fabricators ERP',
+      title: t('proj3_title'),
       category: 'erp',
-      categoryLabel: 'Manufacturing ERP',
+      categoryLabel: t('proj3_label'),
       url: 'https://newlook.ahattrickz.com/',
       image: '/img/projects/upvc.png',
       tags: ['PHP', 'Real-time Flow', 'MySQL', 'CodeIgniter4'],
@@ -147,9 +150,9 @@ const Portfolio = () => {
     },
     {
       id: 4,
-      title: 'IAS Academy Portal',
+      title: t('proj4_title'),
       category: 'website',
-      categoryLabel: 'Educational Website',
+      categoryLabel: t('proj4_label'),
       url: 'https://bluestoneiasacademy.com/',
       image: '/img/projects/ias_academy.png',
       tags: ['Vue','Laravel', 'PHP', 'Clean UI', 'Performance'],
@@ -157,9 +160,9 @@ const Portfolio = () => {
     },
     {
       id: 5,
-      title: 'SMSF Global Website',
+      title: t('proj5_title'),
       category: 'website',
-      categoryLabel: 'Financial Website',
+      categoryLabel: t('proj5_label'),
       url: 'https://www.autosmsf.com.au/',
       image: '/img/projects/smsf.png',
       tags: ['Wordpress', 'Business UI', 'CSS3'],
@@ -167,9 +170,9 @@ const Portfolio = () => {
     },
     {
       id: 6,
-      title: 'AI Conference 2024',
+      title: t('proj6_title'),
       category: 'website',
-      categoryLabel: 'Event Tech Website',
+      categoryLabel: t('proj6_label'),
       url: 'https://bangaloretechconference.com/',
       image: '/img/projects/aiconference.png',
       tags: ['Wordpress', 'Business UI', 'CSS3'],
@@ -177,9 +180,9 @@ const Portfolio = () => {
     },
     {
       id: 7,
-      title: 'Abroad Studies CRM',
+      title: t('proj7_title'),
       category: 'crm',
-      categoryLabel: 'Enterprise CRM',
+      categoryLabel: t('proj7_label'),
       url: 'https://www.bluestoneoverseas.com/admin/',
       image: '/img/projects/AbroadStudiesCRM.png',
       tags: ['PHP', 'CodeIgniter3'],
@@ -198,10 +201,10 @@ const Portfolio = () => {
   ];
 
   const categories = [
-    { label: 'All Projects', value: '*' },
-    { label: 'ERP Systems', value: 'erp' },
-    { label: 'Websites', value: 'website' },
-    { label: 'Custom CRM', value: 'crm' },
+    { label: t('allProjects'), value: '*' },
+    { label: t('erpSystems'), value: 'erp' },
+    { label: t('websites'), value: 'website' },
+    { label: t('customCRM'), value: 'crm' },
   ];
 
   const filteredProjects = filter === '*'
@@ -231,12 +234,12 @@ const Portfolio = () => {
             <div className="col-12 col-lg-8 mb-60">
               <div className="section-heading flex flex-col items-center">
                 <TextReveal
-                  text="Featured Projects"
+                  text={t('featuredProjects')}
                   className="section-title-modern !text-center !justify-center"
                   stagger={0.05}
                 />
                 <div className="accent-line-glow mt-10 mx-auto"></div>
-                <p className="section-subtitle mt-20 text-center w-full px-4 mx-auto">Explore some of the real-world applications and systems I’ve built.</p>
+                <p className="section-subtitle mt-20 text-center w-full px-4 mx-auto">{t('projectSubtitle')}</p>
               </div>
             </div>
           </div>
@@ -289,8 +292,8 @@ const Portfolio = () => {
                   <div className="card-glass-overlay"></div>
                   <div className="portfolio-card-content justify-center align-center">
                     <RocketLaunch size={48} weight="duotone" className="pulse-icon" />
-                    <h3 className="project-title mt-20">Custom SaaS Project</h3>
-                    <p className="coming-soon-text">Coming Soon</p>
+                    <h3 className="project-title mt-20">{t('saasProject')}</h3>
+                    <p className="coming-soon-text">{t('comingSoon')}</p>
                     <div className="tech-ribbon mt-10">
                       <span className="tech-pill">Next.js 14</span>
                       <span className="tech-pill">AI Engine</span>
@@ -380,7 +383,7 @@ const Portfolio = () => {
                           />
                           <div className="loader-inner-dot"></div>
                         </div>
-                        <p className="loading-text">Establishing Secure Connection...</p>
+                        <p className="loading-text">{t('secureConnection')}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -395,7 +398,7 @@ const Portfolio = () => {
 
                   {/* Fallback & Safety Info */}
                   <div className="iframe-safety-bar">
-                    <p>Previewing live environment securely. Some sites may restrict iframe loading; use the top-right arrow to open in new tab if needed.</p>
+                    <p>{t('iframeSafety')}</p>
                   </div>
                 </div>
               </motion.div>

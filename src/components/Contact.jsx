@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import TextReveal from './TextReveal';
 import { Envelope, MapPin, Phone, ArrowRight, CheckCircle, XCircle, Spinner } from '@phosphor-icons/react';
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [status, setStatus] = useState('idle'); // idle, sending, success, error
   const [formData, setFormData] = useState({
     name: '',
@@ -98,7 +100,7 @@ const Contact = () => {
             <div className="col-lg-5 mb-50 mb-lg-0">
               <div className="section-heading mb-30 flex flex-col items-center">
                 <TextReveal
-                  text="Have a Project in Mind? Let’s Talk."
+                  text={t('contactTitle')}
                   className="section-title-modern !text-center !justify-center"
                   stagger={0.05}
                 />
@@ -110,7 +112,7 @@ const Contact = () => {
                     <Envelope size={28} weight="fill" />
                   </div>
                   <div className="contact-text">
-                    <span className="info-label-mini">E-mail:</span>
+                    <span className="info-label-mini">{t('emailLabel')}:</span>
                     <h5><a href="mailto:dev.santhosh08@gmail.com" className="contact-link" target="_blank" rel="noopener noreferrer">dev.santhosh08@gmail.com</a></h5>
                   </div>
                 </motion.div>
@@ -120,8 +122,8 @@ const Contact = () => {
                     <MapPin size={28} weight="fill" />
                   </div>
                   <div className="contact-text">
-                    <span className="info-label-mini">Location:</span>
-                    <h5>Komarapalayam</h5>
+                    <span className="info-label-mini">{t('location')}:</span>
+                    <h5>{t('locationVal')}</h5>
                   </div>
                 </motion.div>
 
@@ -130,7 +132,7 @@ const Contact = () => {
                     <Phone size={28} weight="fill" />
                   </div>
                   <div className="contact-text">
-                    <span className="info-label-mini">Contact:</span>
+                    <span className="info-label-mini">{t('contactLabel')}:</span>
                     <h5><a href="tel:+917871646640" className="contact-link" target="_blank" rel="noopener noreferrer">+91 78716- 46640</a></h5>
                   </div>
                 </motion.div>
@@ -140,7 +142,7 @@ const Contact = () => {
             {/* Right Side: Form */}
             <div className="col-lg-7">
               <motion.div variants={itemVariants} style={{ position: 'relative' }}>
-                <h3 className="contact-form-title">GET IN TOUCH Let’s Discuss Your Project</h3>
+                <h3 className="contact-form-title">{t('contactFormTitle')}</h3>
                 <form id="ajax_form" className="modern-form" onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-md-6 form-group">
@@ -148,7 +150,7 @@ const Contact = () => {
                         type="text"
                         name="name"
                         className="form-control"
-                        placeholder="Full Name"
+                        placeholder={t('fullNamePlaceholder')}
                         required
                         value={formData.name}
                         onChange={handleChange}
@@ -159,7 +161,7 @@ const Contact = () => {
                         type="text"
                         name="phone"
                         className="form-control"
-                        placeholder="Phone Number"
+                        placeholder={t('phonePlaceholder')}
                         value={formData.phone}
                         onChange={handleChange}
                       />
@@ -169,7 +171,7 @@ const Contact = () => {
                         type="email"
                         name="email"
                         className="form-control"
-                        placeholder="Email Address"
+                        placeholder={t('emailPlaceholder')}
                         required
                         value={formData.email}
                         onChange={handleChange}
@@ -180,7 +182,7 @@ const Contact = () => {
                         type="text"
                         name="subject"
                         className="form-control"
-                        placeholder="Project Type / Subject"
+                        placeholder={t('subjectPlaceholder')}
                         value={formData.subject}
                         onChange={handleChange}
                       />
@@ -189,7 +191,7 @@ const Contact = () => {
                       <textarea
                         name="message"
                         className="form-control"
-                        placeholder="Your Message (Describe your project…)"
+                        placeholder={t('messagePlaceholder')}
                         required
                         value={formData.message}
                         onChange={handleChange}
@@ -203,9 +205,9 @@ const Contact = () => {
                         style={{ justifyContent: 'center' }}
                       >
                         {status === 'sending' ? (
-                          <>Sending Message <Spinner size={22} className="spinning-icon" style={{ marginLeft: '10px' }} /></>
+                          <>{t('sendingMessage')} <Spinner size={22} className="spinning-icon" style={{ marginLeft: '10px' }} /></>
                         ) : (
-                          <>Start a Conversation <ArrowRight size={22} style={{ marginLeft: '10px' }} /></>
+                          <>{t('startConversation')} <ArrowRight size={22} style={{ marginLeft: '10px' }} /></>
                         )}
                       </button>
                     </div>
@@ -223,9 +225,9 @@ const Contact = () => {
                       exit={{ opacity: 0, scale: 0.9 }}
                     >
                       <CheckCircle size={64} weight="duotone" color="var(--accent-color)" />
-                      <h4>Success!</h4>
-                      <p>Your message has been safely delivered.</p>
-                      <button onClick={() => setStatus('idle')} className="status-close-btn">Send Another</button>
+                      <h4>{t('formSuccess')}</h4>
+                      <p>{t('formSuccessDesc')}</p>
+                      <button onClick={() => setStatus('idle')} className="status-close-btn">{t('sendAnother')}</button>
                     </motion.div>
                   )}
                   {status === 'error' && (
@@ -237,9 +239,9 @@ const Contact = () => {
                       exit={{ opacity: 0, scale: 0.9 }}
                     >
                       <XCircle size={64} weight="duotone" color="#ef4444" />
-                      <h4>Error</h4>
-                      <p>Something went wrong. Please try again.</p>
-                      <button onClick={() => setStatus('idle')} className="status-close-btn">Try Again</button>
+                      <h4>{t('formError')}</h4>
+                      <p>{t('formErrorDesc')}</p>
+                      <button onClick={() => setStatus('idle')} className="status-close-btn">{t('tryAgain')}</button>
                     </motion.div>
                   )}
                 </AnimatePresence>

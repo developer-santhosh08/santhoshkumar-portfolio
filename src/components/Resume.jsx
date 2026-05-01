@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import TextReveal from './TextReveal';
 import {
@@ -77,24 +78,25 @@ const BentoCard = ({ children, domain, delay = 0 }) => {
 };
 
 const Resume = () => {
+  const { t } = useLanguage();
   const experiences = [
     {
-      date: 'August 2025 - Present',
-      title: 'Ahattrickz Info Tech Pvt. Ltd.',
-      role: 'Full Stack Developer',
-      description: 'Full Stack Developer specializing in scalable ERP systems and high-performance web applications.',
+      date: t('exp1_date'),
+      title: t('exp1_company'),
+      role: t('exp1_role'),
+      description: t('exp1_desc'),
       responsibilities: [
-        'Developed scalable ERP systems using Laravel, CodeIgniter, React, and Python.',
-        'Designed high-performance, responsive user interfaces to enhance user experience and engagement.',
-        'Integrated frontend and backend systems with RESTful APIs and automated business workflows.',
-        'Improved application performance and maintainability through clean code practices and optimization techniques.',
+        t('exp1_resp1'),
+        t('exp1_resp2'),
+        t('exp1_resp3'),
+        t('exp1_resp4'),
       ]
     },
   ];
 
   const skillCategories = [
     {
-      domain: 'Frontend',
+      domain: t('frontend'),
       summary: 'Specializing in high-performance, responsive UIs with extreme focus on seamless UX and pixel-perfect design.',
       highlight: 'Interactivity Expert',
       skills: [
@@ -109,7 +111,7 @@ const Resume = () => {
       ]
     },
     {
-      domain: 'Backend',
+      domain: t('backend'),
       summary: 'Architecting secure, scalable API structures and automated business logic for enterprise-level systems.',
       highlight: 'ERP Logic Architect',
       skills: [
@@ -121,7 +123,7 @@ const Resume = () => {
       ]
     },
     {
-      domain: 'Database',
+      domain: t('database'),
       summary: 'Optimizing data integrity, indexing, and complex query performance for large-scale data architecture.',
       highlight: 'System Integrity',
       skills: [
@@ -130,7 +132,7 @@ const Resume = () => {
       ]
     },
     {
-      domain: 'DevOps',
+      domain: t('devops'),
       summary: 'Ensuring 99.9% uptime and efficient deployment cycles through professional server and VPS management.',
       highlight: 'High Availability',
       skills: [
@@ -165,7 +167,7 @@ const Resume = () => {
             <div className="col-lg-6 col-12 sm-padding">
               <div className="section-heading mb-50 flex flex-col items-center lg:items-start">
                 <TextReveal
-                  text="Work Experience"
+                  text={t('workExperience')}
                   className="section-title-modern !text-center !justify-center lg:!text-left lg:!justify-start whitespace-nowrap"
                   stagger={0.05}
                 />
@@ -215,7 +217,7 @@ const Resume = () => {
               <div className="resume-viewer-container" style={{ transform: 'none' }}>
                 <div className="viewer-header">
                   <IdentificationCard size={28} weight="duotone" />
-                  <h3>Live Resume Preview</h3>
+                  <h3>{t('resumePreview')}</h3>
                 </div>
 
                 <div className="resume-frame-simple" style={{
@@ -246,7 +248,7 @@ const Resume = () => {
                     download="Santhosh_Kumar_Resume.pdf"
                     className="download-cv-btn-premium"
                   >
-                    <span>Download Full Resume</span>
+                    <span>{t('downloadResume')}</span>
                     <DownloadSimple size={20} weight="bold" />
                   </a>
                 </div>
@@ -269,12 +271,12 @@ const Resume = () => {
             <div className="col-lg-8 col-12 mb-80">
               <div className="section-heading flex flex-col items-center">
                 <TextReveal
-                  text="Technical Expertise"
+                  text={t('techExpertise')}
                   className="section-title-modern !text-center !justify-center"
                   stagger={0.05}
                 />
                 <div className="accent-line-glow mt-10 mx-auto"></div>
-                <p className="section-subtitle mt-20 py-2">Architecting scalable business solutions through full-stack lifecycle mastery</p>
+                <p className="section-subtitle mt-20 py-2">{t('expSubtitle')}</p>
               </div>
             </div>
           </div>
