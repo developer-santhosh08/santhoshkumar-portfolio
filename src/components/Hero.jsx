@@ -93,15 +93,15 @@ const Hero = () => {
               <TextReveal
                 text="Hello, my name is"
                 className="text-accent hero-intro-mini"
-                delay={0.5}
-                stagger={0.05}
+                delay={0.1}
+                stagger={0.02}
               />
               <TextReveal
                 text="Santhosh Kumar"
                 className="hero-name-modern"
                 variant="word"
-                delay={0.7}
-                stagger={0.1}
+                delay={0.2}
+                stagger={0.05}
               />
               <div className="overflow-hidden w-full flex justify-center mt-2">
                 <motion.h2 

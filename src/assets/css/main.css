@@ -165,7 +165,7 @@ h6 {
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 642px) {
     .hero-name-modern {
         font-size: 2.8rem;
     }
@@ -183,7 +183,17 @@ h6 {
     }
     
     .section-padding {
-        padding: 60px 0;
+        padding: 40px 15px;
+    }
+
+    body.layout-horizontal .container {
+        max-width: 100% !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .hide-mobile-bg {
+        display: none !important;
     }
 }
 
@@ -532,6 +542,12 @@ h6 {
     box-shadow: 0 0 30px 5px #fff, 0 0 100px 20px rgba(var(--accent-color-rgb), 0.5);
     z-index: 2;
     opacity: 0.5;
+}
+
+@media (max-width: 642px) {
+    .hero-aurora-glow, .hero-aurora-pinch, .hero-aurora-beam {
+        display: none !important;
+    }
 }
 
 @keyframes aurora-shimmer {
@@ -2001,14 +2017,14 @@ body.layout-horizontal .dl-side-content {
 body.layout-horizontal .container {
     max-width: 100% !important;
     width: 100% !important;
-    padding-left: 80px !important;
-    padding-right: 80px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
 }
 
 body.layout-horizontal .dl-fixed-sidebar,
 body.layout-horizontal .dl-burger-menu {
     display: none !important;
-}
+}   
 
 @media (max-width: 991px) {
     body.layout-horizontal .dl-horizontal-header {

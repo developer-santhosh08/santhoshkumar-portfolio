@@ -6,7 +6,7 @@ const Loader = () => {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
       style={{
         position: 'fixed',
         top: 0,
@@ -20,53 +20,85 @@ const Loader = () => {
         alignItems: 'center',
         zIndex: 99999,
         color: 'var(--text-color)',
+        padding: '20px',
+        textAlign: 'center'
       }}
     >
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{
-          duration: 1,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut"
-        }}
-        style={{
-          fontSize: '4rem',
-          fontFamily: "'Teko', sans-serif",
-          letterSpacing: '10px',
-          fontWeight: 600,
-          color: 'var(--accent-color)',
-          textTransform: 'uppercase'
-        }}
-      >
-        Santhosh Kumar
-      </motion.div>
-      <motion.div
-        initial={{ width: 0 }}
-        animate={{ width: '200px' }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
-        style={{
-          height: '2px',
-          backgroundColor: 'var(--accent-color)',
-          marginTop: '10px',
-          boxShadow: '0 0 10px var(--accent-color)'
-        }}
-      />
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.5 }}
-        transition={{ delay: 0.5 }}
-        style={{
-          marginTop: '15px',
-          fontSize: '12px',
-          textTransform: 'uppercase',
-          letterSpacing: '2px',
-          fontFamily: "'Open Sans', sans-serif"
-        }}
-      >
-        Loading Experience...
-      </motion.span>
+      <div style={{ position: 'relative', width: '100%', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          style={{ marginBottom: '30px' }}
+        >
+          <motion.span
+            style={{
+              fontSize: 'clamp(16px, 5vw, 20px)',
+              textTransform: 'uppercase',
+              letterSpacing: '6px',
+              fontFamily: "'Unbounded', sans-serif",
+              fontWeight: 400,
+              color: 'var(--heading-color)',
+              display: 'block'
+            }}
+          >
+            Loading Experience
+          </motion.span>
+          <motion.div
+            animate={{ 
+              opacity: [0.3, 1, 0.3],
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            style={{
+              fontSize: '10px',
+              letterSpacing: '2px',
+              marginTop: '8px',
+              color: 'var(--accent-color)',
+              fontFamily: 'var(--mono-font)'
+            }}
+          >
+            INITIALIZING ASSETS
+          </motion.div>
+        </motion.div>
+        
+        <div style={{ 
+          width: '140px', 
+          height: '1px', 
+          backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
+          <motion.div
+            initial={{ x: '-100%' }}
+            animate={{ x: '100%' }}
+            transition={{ 
+              duration: 1.8, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              background: 'linear-gradient(90deg, transparent, var(--accent-color), transparent)',
+            }}
+          />
+        </div>
+        
+        {/* Subtle glow behind the loader */}
+        <div style={{
+          position: 'absolute',
+          width: '200px',
+          height: '200px',
+          background: 'radial-gradient(circle, rgba(var(--accent-color-rgb), 0.1) 0%, transparent 70%)',
+          zIndex: -1,
+          filter: 'blur(20px)'
+        }} />
+      </div>
     </motion.div>
   );
 };

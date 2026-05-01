@@ -220,7 +220,6 @@ const Portfolio = () => {
     <section id="portfolios" className="portfolio-section section-padding bd-bottom" data-scroll-index="5">
       <motion.div
         className="container"
-        style={{ maxWidth: '95%' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
