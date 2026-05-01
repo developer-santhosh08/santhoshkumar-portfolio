@@ -783,6 +783,8 @@ const Portfolio = () => {
           align-items: center;
           justify-content: center;
           z-index: 5;
+          padding: 20px;
+          text-align: center;
         }
 
         .loader-orbit-container {
@@ -824,6 +826,8 @@ const Portfolio = () => {
           color: rgba(255,255,255,0.5);
           letter-spacing: 2px;
           text-transform: uppercase;
+          text-align: center;
+          max-width: 250px;
         }
         
         .project-iframe { 

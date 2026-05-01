@@ -31,6 +31,7 @@ const SettingsModal = ({ isOpen, onClose, accentColor, setAccentColor, bgVideo, 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             onClick={onClose}
             style={{
               position: 'fixed',
@@ -48,7 +49,7 @@ const SettingsModal = ({ isOpen, onClose, accentColor, setAccentColor, bgVideo, 
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             style={{
               position: 'fixed',
               top: 0,
