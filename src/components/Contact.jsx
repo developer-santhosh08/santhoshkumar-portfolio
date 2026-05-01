@@ -30,9 +30,16 @@ const Contact = () => {
         },
         body: JSON.stringify({
           access_key: "94b36274-9627-40ae-86c0-d4d42e081d8e",
-          ...formData,
-          from_name: "Santhosh Kumar Portfolio",
-          subject: `New Message from Portfolio: ${formData.subject || 'No Subject'}`
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          from_name: "SANTHOSH PORTFOLIO",
+          _subject: `New Lead: ${formData.name}`,
+          _template: "table",
+          _logo: "https://santhoshkumar-portfolio-eosin.vercel.app/img/mail-banner.png", // This will work once you deploy to Vercel
+          _accent_color: "a855f7" 
         }),
       });
 
@@ -91,7 +98,7 @@ const Contact = () => {
             <div className="col-lg-5 mb-50 mb-lg-0">
               <div className="section-heading mb-30 flex flex-col items-center">
                 <TextReveal
-                  text="Get Ready To Create Great"
+                  text="Have a Project in Mind? Let’s Talk."
                   className="section-title-modern !text-center !justify-center"
                   stagger={0.05}
                 />
@@ -133,7 +140,7 @@ const Contact = () => {
             {/* Right Side: Form */}
             <div className="col-lg-7">
               <motion.div variants={itemVariants} style={{ position: 'relative' }}>
-                <h3 className="contact-form-title">GET IN TOUCH</h3>
+                <h3 className="contact-form-title">GET IN TOUCH Let’s Discuss Your Project</h3>
                 <form id="ajax_form" className="modern-form" onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-md-6 form-group">
@@ -141,7 +148,7 @@ const Contact = () => {
                         type="text"
                         name="name"
                         className="form-control"
-                        placeholder="Your Name"
+                        placeholder="Full Name"
                         required
                         value={formData.name}
                         onChange={handleChange}
@@ -162,7 +169,7 @@ const Contact = () => {
                         type="email"
                         name="email"
                         className="form-control"
-                        placeholder="Your Email"
+                        placeholder="Email Address"
                         required
                         value={formData.email}
                         onChange={handleChange}
@@ -173,7 +180,7 @@ const Contact = () => {
                         type="text"
                         name="subject"
                         className="form-control"
-                        placeholder="Subject"
+                        placeholder="Project Type / Subject"
                         value={formData.subject}
                         onChange={handleChange}
                       />
@@ -182,7 +189,7 @@ const Contact = () => {
                       <textarea
                         name="message"
                         className="form-control"
-                        placeholder="Your Message"
+                        placeholder="Your Message (Describe your project…)"
                         required
                         value={formData.message}
                         onChange={handleChange}
@@ -198,7 +205,7 @@ const Contact = () => {
                         {status === 'sending' ? (
                           <>Sending Message <Spinner size={22} className="spinning-icon" style={{ marginLeft: '10px' }} /></>
                         ) : (
-                          <>Appointment Now <ArrowRight size={22} style={{ marginLeft: '10px' }} /></>
+                          <>Start a Conversation <ArrowRight size={22} style={{ marginLeft: '10px' }} /></>
                         )}
                       </button>
                     </div>

@@ -45,11 +45,12 @@ const About = () => {
   };
 
   const textVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 50, rotateX: 15 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      rotateX: 0,
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -76,10 +77,10 @@ const About = () => {
       <motion.div
         className="container"
         style={{ transformStyle: "preserve-3d" }}
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 80, rotateX: 10 }}
+        whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.6, ease: [0.6, 0.05, 0.01, 0.9] }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="row align-items-center" style={{ transformStyle: "preserve-3d" }}>
           <motion.div
@@ -107,7 +108,7 @@ const About = () => {
               </div>
               <div className="w-full px-2 py-3 sm:px-0">
                 <TextReveal
-                  text="Full Stack Developer with 1 year of experience specializing in ERP systems and web applications. Skilled in Laravel, CodeIgniter, React, Vue, and database management, focused on building scalable and efficient business solutions."
+                  text="I’m a Full Stack Developer with hands-on experience in building ERP systems and scalable web applications. I specialize in developing efficient business solutions using modern technologies like React, Laravel, CodeIgniter, and Python, with a strong focus on creating high-performance, user-friendly applications that solve real-world problems. I’m passionate about clean code, performance optimization, and delivering reliable software solutions."
                   className="about-description !text-center md:!text-left"
                   delay={0.3}
                   stagger={0.015}

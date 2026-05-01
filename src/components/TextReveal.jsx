@@ -33,14 +33,14 @@ const TextReveal = ({
       y: 0,
       rotateX: 0,
       transition: {
-        duration: 0.5,
-        ease: [0.215, 0.61, 0.355, 1], // Cinematic easeOut
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1], // Premium quintic easeOut
       },
     },
     hidden: {
       opacity: 0,
-      y: 40,
-      rotateX: 15,
+      y: 30,
+      rotateX: 10,
     },
   };
 
