@@ -2230,3 +2230,55 @@ body.layout-horizontal .dl-burger-menu {
         margin-right: auto;
     }
 }
+
+.outline-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 35px;
+    height: 55px;
+    border: 2px solid var(--accent-color);
+    color: #fff !important;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+}
+
+.outline-btn:hover {
+    background: var(--accent-color) !important;
+    color: #fff !important;
+    box-shadow: 0 15px 35px rgba(var(--accent-color-rgb), 0.4);
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.default-btn:hover {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+@media (max-width: 576px) {
+    .hero-btn-container {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    .default-btn, .outline-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        height: 50px;
+        font-size: 12px;
+        padding: 0 20px;
+    }
+}

@@ -5,7 +5,8 @@ import {
   LinkedinLogo,
   GithubLogo,
   InstagramLogo,
-  CaretRight
+  CaretRight,
+  Stack
 } from '@phosphor-icons/react';
 import TextReveal from './TextReveal';
 
@@ -33,8 +34,8 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.5
+        staggerChildren: 0.15,
+        delayChildren: 2.1
       }
     }
   };
@@ -100,8 +101,8 @@ const Hero = () => {
                 text="Santhosh Kumar"
                 className="hero-name-modern"
                 variant="word"
-                delay={0.2}
-                stagger={0.05}
+                delay={0.3}
+                stagger={0.06}
               />
               <div className="overflow-hidden w-full flex justify-center mt-2">
                 <motion.h2 
@@ -159,10 +160,14 @@ const Hero = () => {
                   </a>
                 </li>
               </motion.ul>
-              <motion.div variants={textVariants} className="d-flex justify-content-center mt-4">
+              <motion.div variants={textVariants} className="hero-btn-container flex flex-wrap justify-center gap-4 mt-8">
                 <a href="#contact" className="default-btn flex items-center gap-2 group">
-                  <span>Hire Me Now</span>
+                  <span>Let’s Work Together</span>
                   <CaretRight size={18} weight="bold" className="group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a href="#portfolios" className="outline-btn flex items-center gap-2 group">
+                  <span>View Projects</span>
+                  <Stack size={18} weight="bold" className="group-hover:scale-110 transition-transform" />
                 </a>
               </motion.div>
             </div>

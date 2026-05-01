@@ -80,14 +80,14 @@ const Resume = () => {
   const experiences = [
     {
       date: 'August 2025 - Present',
-      title: 'Ahattickz Info Tech pvt.ltd',
+      title: 'Ahattrickz Info Tech Pvt. Ltd.',
       role: 'Full Stack Developer',
-      description: 'Full Stack Developer focused on building scalable ERP solutions and performance-driven web applications.',
+      description: 'Full Stack Developer specializing in scalable ERP systems and high-performance web applications.',
       responsibilities: [
-        'Developed robust ERP systems using Laravel, CodeIgniter, React, and Python.',
-        'Designed high-performance, responsive UIs with a focus on seamless user experience.',
-        'Integrated complex frontend-backend APIs and automated business workflows.',
-        'Optimized application speed and maintainability through clean-code practices.'
+        'Developed scalable ERP systems using Laravel, CodeIgniter, React, and Python.',
+        'Designed high-performance, responsive user interfaces to enhance user experience and engagement.',
+        'Integrated frontend and backend systems with RESTful APIs and automated business workflows.',
+        'Improved application performance and maintainability through clean code practices and optimization techniques.',
       ]
     },
   ];
@@ -165,7 +165,7 @@ const Resume = () => {
             <div className="col-lg-6 col-12 sm-padding">
               <div className="section-heading mb-50 flex flex-col items-center lg:items-start">
                 <TextReveal
-                  text="Working Experience"
+                  text="Work Experience"
                   className="section-title-modern !text-center !justify-center lg:!text-left lg:!justify-start whitespace-nowrap"
                   stagger={0.05}
                 />

@@ -69,6 +69,7 @@ const ProjectCard = ({ project, onClick }) => {
           </div>
 
           <h3 className="project-title">{project.title}</h3>
+          {/* <span className='project-sub mb-1'>{project.sub}</span> */}
 
           <div className="tech-ribbon py-2">
             {project.tags.map((tag, i) => (
@@ -116,6 +117,7 @@ const Portfolio = () => {
     {
       id: 1,
       title: 'GYM Management ERP',
+      sub:'A complete system to manage memberships, billing, and daily operations.',
       category: 'erp',
       categoryLabel: 'ERP System',
       url: 'https://erp.macawfit.com/',
@@ -229,12 +231,12 @@ const Portfolio = () => {
             <div className="col-12 col-lg-8 mb-60">
               <div className="section-heading flex flex-col items-center">
                 <TextReveal
-                  text="Work Portfolios"
+                  text="Featured Projects"
                   className="section-title-modern !text-center !justify-center"
                   stagger={0.05}
                 />
                 <div className="accent-line-glow mt-10 mx-auto"></div>
-                <p className="section-subtitle mt-20 text-center w-full px-4 mx-auto">Direct live access to enterprise-grade ecosystem deployments</p>
+                <p className="section-subtitle mt-20 text-center w-full px-4 mx-auto">Explore some of the real-world applications and systems I’ve built.</p>
               </div>
             </div>
           </div>

@@ -64,6 +64,9 @@ function App() {
       document.body.classList.add('layout-horizontal');
     }
 
+    // Ensure page starts at the top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     // Apply theme class
     if (theme === 'light') {
       document.body.classList.add('light-mode');
