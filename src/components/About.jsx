@@ -79,7 +79,7 @@ const About = () => {
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 1.2, ease: [0.6, 0.05, 0.01, 0.9] }}
+        transition={{ duration: 0.6, ease: [0.6, 0.05, 0.01, 0.9] }}
       >
         <div className="row align-items-center" style={{ transformStyle: "preserve-3d" }}>
           <motion.div

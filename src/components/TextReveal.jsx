@@ -9,7 +9,7 @@ const TextReveal = ({
   text,
   className,
   delay = 0,
-  stagger = 0.02,
+  stagger = 0.01,
   variant = 'word', // 'word' or 'char'
   once = true,
   threshold = 0.2
@@ -33,7 +33,7 @@ const TextReveal = ({
       y: 0,
       rotateX: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         ease: [0.215, 0.61, 0.355, 1], // Cinematic easeOut
       },
     },

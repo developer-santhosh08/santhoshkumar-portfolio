@@ -155,7 +155,6 @@ const Resume = () => {
       <section id="resume" className="resume-section section-padding bd-bottom" data-scroll-index="2">
         <motion.div
           className="container"
-          style={{ maxWidth: '95%' }}
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
@@ -261,7 +260,6 @@ const Resume = () => {
       <section id="skills" className="skills-section section-padding bd-bottom" data-scroll-index="3">
         <motion.div
           className="container"
-          style={{ maxWidth: '95%' }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

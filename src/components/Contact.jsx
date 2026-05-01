@@ -71,7 +71,6 @@ const Contact = () => {
     <section id="contact" className="contact-section section-padding" data-scroll-index="7">
       <motion.div
         className="container"
-        style={{ maxWidth: '95%' }}
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
