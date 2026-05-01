@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Syne:wght@700;800&family=Syncopate:wght@400;700&family=Outfit:wght@300;400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --bg-color: #292929;
+  --card-bg: #222;
+  --text-color: #999;
+  --heading-color: #fff;
+  --accent-color: #a855f7;
+  --border-color: #333;
+  --sidebar-bg: #292929;
+}
+
+body.light-mode {
+  --bg-color: #f5f5f5;
+  --card-bg: #ffffff;
+  --text-color: #333;
+  --heading-color: #222;
+  --border-color: #ddd;
+  --sidebar-bg: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Elite Layout Adaptation Controls */
+body.layout-horizontal {
+  padding-top: 80px;
+  /* Synchronized with horizontal header height */
+}
+
+body.layout-horizontal .dl-side-content {
+  margin-left: 0 !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+}
+
+body.layout-horizontal .dl-fixed-sidebar,
+body.layout-horizontal .dl-burger-menu {
+  display: none !important;
+}
+
+body.layout-horizontal .section-padding {
+  padding: 100px 0;
+}
+
+/* Elite Background Contrast Overrides */
+body.light-mode.has-bg-video {
+  --text-color: #ffffff;
+  --heading-color: #ffffff;
+}
+
+body.light-mode.has-bg-video p,
+body.light-mode.has-bg-video span:not(.nebula-skill-name),
+body.light-mode.has-bg-video h1,
+body.light-mode.has-bg-video h2,
+body.light-mode.has-bg-video h3,
+body.light-mode.has-bg-video h4,
+body.light-mode.has-bg-video h5 {
+  color: #ffffff !important;
+}
+
+body.light-mode.has-bg-video .section-subtitle {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
