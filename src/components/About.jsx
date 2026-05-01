@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import santhoshImg from '../assets/img/santhosh.jpg';
 import TextReveal from './TextReveal';
 
 const About = () => {
+  const { t } = useLanguage();
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -97,7 +99,7 @@ const About = () => {
             <div className="about-content flex flex-col items-center text-center md:items-start md:text-left" style={{ transformStyle: "preserve-3d" }}>
               <div className="flex flex-col items-center md:items-start mb-6">
                 <TextReveal
-                  text="Let Me Introduce Myself."
+                  text={t('aboutTitle')}
                   className="section-title-modern !text-center !justify-center md:!text-left md:!justify-start"
                   stagger={0.05}
                 />
@@ -108,7 +110,7 @@ const About = () => {
               </div>
               <div className="w-full px-2 py-3 sm:px-0">
                 <TextReveal
-                  text="I’m a Full Stack Developer with hands-on experience in building ERP systems and scalable web applications. I specialize in developing efficient business solutions using modern technologies like React, Laravel, CodeIgniter, and Python, with a strong focus on creating high-performance, user-friendly applications that solve real-world problems. I’m passionate about clean code, performance optimization, and delivering reliable software solutions."
+                  text={t('aboutDesc')}
                   className="about-description !text-center md:!text-left"
                   delay={0.3}
                   stagger={0.015}
@@ -117,10 +119,10 @@ const About = () => {
 
               <div className="profile-info-grid w-full grid grid-cols-1 sm:grid-cols-2 justify-items-center md:justify-items-start gap-x-4 gap-y-6 mt-4">
                 {[
-                  { label: 'Full Name', value: 'Santhosh Kumar' },
-                  { label: 'Birth Date', value: '08-07-2004' },
-                  { label: 'Address', value: 'Tamil Nadu, India' },
-                  { label: 'Email', value: 'dev.santhosh@gmail.com', isEmail: true }
+                  { label: t('fullName'), value: t('name') },
+                  { label: t('birthDate'), value: '08-07-2004' },
+                  { label: t('address'), value: t('addressVal') },
+                  { label: t('email'), value: 'dev.santhosh@gmail.com', isEmail: true }
                 ].map((info, idx) => (
                   <motion.div key={idx} className="info-item-modern w-full flex flex-col items-center md:items-start" variants={textVariants}>
                     <span className="info-label-mini uppercase tracking-widest text-[9px] opacity-50 mb-1 whitespace-nowrap text-center w-full md:text-left">{info.label}</span>

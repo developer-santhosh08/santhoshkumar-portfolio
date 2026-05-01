@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import Typed from 'typed.js';
 import { motion } from 'framer-motion';
 import {
@@ -11,13 +12,14 @@ import {
 import TextReveal from './TextReveal';
 
 const Hero = () => {
+  const { language, t } = useLanguage();
   const el = useRef(null);
 
   useEffect(() => {
     if (!el.current) return;
 
     const typed = new Typed(el.current, {
-      strings: ['a Full Stack Developer'],
+      strings: [t('role')],
       typeSpeed: 50,
       backSpeed: 50,
       loop: true,
@@ -27,7 +29,7 @@ const Hero = () => {
     return () => {
       typed.destroy();
     };
-  }, []);
+  }, [language]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -92,13 +94,13 @@ const Hero = () => {
           >
             <div className="hero-content">
               <TextReveal
-                text="Hello, my name is"
+                text={t('hello')}
                 className="text-accent hero-intro-mini"
                 delay={0.1}
                 stagger={0.02}
               />
               <TextReveal
-                text="Santhosh Kumar"
+                text={t('name')}
                 className="hero-name-modern"
                 variant="word"
                 delay={0.3}
@@ -121,9 +123,9 @@ const Hero = () => {
                   className="hero-typed-modern text-[0.8rem] sm:text-[1.6rem] md:text-[2.2rem] whitespace-nowrap"
                 >
                   {typeof window !== 'undefined' && window.innerWidth < 576 ? (
-                    <>I'm <span className="text-[var(--accent-color)]">a Full Stack Developer</span></>
+                    <>{t('im')} <span className="text-[var(--accent-color)]">{t('role')}</span></>
                   ) : (
-                    <>I'm <span ref={el} className="typed text-[var(--accent-color)]"></span></>
+                    <>{t('im')} <span ref={el} className="typed text-[var(--accent-color)]"></span></>
                   )}
                 </motion.h2>
               </div>
@@ -162,11 +164,11 @@ const Hero = () => {
               </motion.ul>
               <motion.div variants={textVariants} className="hero-btn-container flex flex-wrap justify-center gap-4 mt-8">
                 <a href="#contact" className="default-btn flex items-center gap-2 group">
-                  <span>Let’s Work Together</span>
+                  <span>{t('workTogether')}</span>
                   <CaretRight size={18} weight="bold" className="group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a href="#portfolios" className="outline-btn flex items-center gap-2 group">
-                  <span>View Projects</span>
+                  <span>{t('viewProjects')}</span>
                   <Stack size={18} weight="bold" className="group-hover:scale-110 transition-transform" />
                 </a>
               </motion.div>

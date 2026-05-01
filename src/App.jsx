@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollToTop';
 import SettingsModal from './components/SettingsModal';
 import Background from './components/Background';
 import { AnimatePresence } from 'framer-motion';
+import { LanguageProvider } from './context/LanguageContext';
 import {
   LinkedinLogo,
   GithubLogo,
@@ -74,11 +75,19 @@ function App() {
       document.body.classList.remove('light-mode');
     }
 
-    // Hide loader after 2 seconds to allow assets and brand to show
+    // Hide loader after a delay to allow assets and brand to show
+    // Tamil loader gets more time (6s) for the poetry/image
+    const currentLang = localStorage.getItem('language') || 'en';
+    const isFirstTime = !localStorage.getItem('hasVisited'); 
+    const loadingTime = (currentLang === 'ta' || isFirstTime) ? 6000 : 2000;
+    
     const timer = setTimeout(() => {
       setIsLoading(false);
       document.body.classList.add('loaded');
-    }, 2000);
+      if (isFirstTime) {
+        localStorage.setItem('hasVisited', 'true');
+      }
+    }, loadingTime);
 
     // Scroll Spy Logic
     const sectionRatios = {};
@@ -175,7 +184,8 @@ function App() {
   }, [bgVideo]);
 
   return (
-    <div className="app-container">
+    <LanguageProvider>
+      <div className="app-container">
       <AnimatePresence>
         {isLoading && <Loader />}
       </AnimatePresence>
@@ -250,7 +260,8 @@ function App() {
         menuLayout={menuLayout}
         setMenuLayout={setMenuLayout}
       />
-    </div>
+      </div>
+    </LanguageProvider>
   );
 }
 

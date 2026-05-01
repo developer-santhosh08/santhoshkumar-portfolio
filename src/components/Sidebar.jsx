@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   House,
@@ -15,19 +16,28 @@ import {
   LinkedinLogo,
   GithubLogo,
   InstagramLogo,
-  CaretRight
+  CaretRight,
+  Globe,
+  CaretDown
 } from '@phosphor-icons/react';
 
 const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 'vertical' }) => {
+  const { language, setLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [showLang, setShowLang] = useState(false);
+
+  const languages = [
+    { code: 'en', label: 'English' },
+    { code: 'ta', label: 'Tamil' }
+  ];
 
   const menuItems = [
-    { label: 'Home', href: '#home', nav: '0', icon: <House size={22} weight="fill" /> },
-    { label: 'About', href: '#about', nav: '1', icon: <User size={22} weight="fill" /> },
-    { label: 'Experience', href: '#resume', nav: '2', icon: <FileText size={22} weight="fill" /> },
-    { label: 'Skills', href: '#skills', nav: '3', icon: <Tag size={22} weight="fill" /> },
-    { label: 'Projects', href: '#portfolios', nav: '5', icon: <Stack size={22} weight="fill" /> },
-    { label: 'Contact', href: '#contact', nav: '7', icon: <Envelope size={22} weight="fill" /> },
+    { label: t('home'), href: '#home', nav: '0', icon: <House size={22} weight="fill" /> },
+    { label: t('about'), href: '#about', nav: '1', icon: <User size={22} weight="fill" /> },
+    { label: t('resume'), href: '#resume', nav: '2', icon: <FileText size={22} weight="fill" /> },
+    { label: t('skills'), href: '#skills', nav: '3', icon: <Tag size={22} weight="fill" /> },
+    { label: t('projects'), href: '#portfolios', nav: '5', icon: <Stack size={22} weight="fill" /> },
+    { label: t('contact'), href: '#contact', nav: '7', icon: <Envelope size={22} weight="fill" /> },
   ];
 
   if (layout === 'horizontal') {
@@ -84,7 +94,81 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
             </ul>
           </nav>
 
-          <div className="header-actions d-none d-lg-flex" style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
+          <div className="header-actions d-none d-lg-flex" style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
+            <div style={{ position: 'relative' }}>
+              <div 
+                onClick={() => setShowLang(!showLang)} 
+                style={{ 
+                  cursor: 'pointer', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '8px',
+                  padding: '8px 15px',
+                  borderRadius: '12px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  transition: 'all 0.3s'
+                }}
+                className="hover:bg-white/10"
+              >
+                <Globe size={20} color="#fff" />
+                <span style={{ color: '#fff', fontSize: '13px', fontWeight: 600, textTransform: 'uppercase' }}>
+                  {language}
+                </span>
+                <CaretDown size={14} color="#fff" style={{ transform: showLang ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }} />
+              </div>
+
+              <AnimatePresence>
+                {showLang && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    style={{
+                      position: 'absolute',
+                      top: 'calc(100% + 10px)',
+                      right: 0,
+                      background: 'rgba(15, 15, 20, 0.95)',
+                      backdropFilter: 'blur(20px)',
+                      borderRadius: '15px',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      padding: '10px',
+                      minWidth: '150px',
+                      zIndex: 1000,
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+                    }}
+                  >
+                    {languages.map((lang) => (
+                      <div
+                        key={lang.code}
+                        onClick={() => {
+                          setLanguage(lang.code);
+                          setShowLang(false);
+                        }}
+                        style={{
+                          padding: '10px 15px',
+                          borderRadius: '10px',
+                          cursor: 'pointer',
+                          color: language === lang.code ? 'var(--accent-color)' : '#fff',
+                          fontSize: '14px',
+                          fontWeight: 500,
+                          transition: 'all 0.2s',
+                          background: language === lang.code ? 'rgba(255,255,255,0.05)' : 'transparent',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between'
+                        }}
+                        className="hover:bg-white/5"
+                      >
+                        {lang.label}
+                        {language === lang.code && <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--accent-color)' }} />}
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <div onClick={openSettings} style={{ cursor: 'pointer', opacity: 0.7 }}>
               <Gear size={24} color="#fff" />
             </div>
@@ -98,7 +182,7 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
               borderRadius: '20px',
               textDecoration: 'none'
             }}>
-              <span>Let’s Craft </span>
+              <span>{t('craft')} </span>
               <PaperPlaneTilt size={18} weight="bold" />
             </a>
           </div>
@@ -162,7 +246,7 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
                   </div>
                   <div className="flex flex-col">
                     <div className="flex items-center gap-2">
-                      <span className="text-white/40 text-[10px] font-bold uppercase tracking-wider">Hello</span>
+                      <span className="text-white/40 text-[10px] font-bold uppercase tracking-wider">{t('hello_sidebar')}</span>
                       <motion.div
                         animate={{ rotate: [0, 20, 0, 20, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
@@ -226,6 +310,46 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
                   ))}
                 </motion.div>
 
+                <div className="flex flex-col gap-3 mb-4">
+                  <div 
+                    onClick={() => setShowLang(!showLang)}
+                    className="flex items-center justify-between p-4 border border-white/5 rounded-2xl bg-white/[0.02] cursor-pointer hover:bg-white/5 transition-all"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Globe size={18} weight="bold" className="text-white/40" />
+                      <span className="text-white/40 text-[10px] uppercase tracking-[0.2em] font-bold" style={{ fontFamily: "'Unbounded', sans-serif" }}>{t('language')}</span>
+                    </div>
+                    <span className="text-white text-[10px] uppercase font-bold" style={{ fontFamily: "'Unbounded', sans-serif" }}>
+                      {languages.find(l => l.code === language)?.label}
+                    </span>
+                  </div>
+
+                  <AnimatePresence>
+                    {showLang && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden flex flex-col gap-2"
+                      >
+                        {languages.map((lang) => (
+                          <div
+                            key={lang.code}
+                            onClick={() => {
+                              setLanguage(lang.code);
+                              setShowLang(false);
+                            }}
+                            className={`p-3 px-5 rounded-xl text-[10px] uppercase tracking-wider font-bold transition-all ${language === lang.code ? 'bg-white/10 text-[var(--accent-color)]' : 'bg-white/[0.02] text-white/40'}`}
+                            style={{ fontFamily: "'Unbounded', sans-serif" }}
+                          >
+                            {lang.label}
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
                 <div className="mt-auto pt-10">
                     <motion.div 
                       whileHover={{ scale: 1.02 }}
@@ -235,7 +359,7 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
                       style={{ fontFamily: "'Unbounded', sans-serif", display: 'flex' }}
                     >
                       <Gear size={18} weight="bold" />
-                      <span>Settings</span>
+                      <span>{t('settings')}</span>
                     </motion.div>
 
                     <motion.a 
@@ -249,9 +373,9 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
                         display: 'flex',
                         textDecoration: 'none'
                       }}
-                      onClick={() => setIsOpen(false)}
+                       onClick={() => setIsOpen(false)}
                     >
-                      <span style={{ color: '#fff', opacity: 1 }}>Let's Talk</span>
+                      <span style={{ color: '#fff', opacity: 1 }}>{t('lets_talk')}</span>
                       <PaperPlaneTilt size={16} weight="bold" color="#fff" />
                     </motion.a>
                 </div>
@@ -388,8 +512,80 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
             borderTop: '1px solid rgba(255,255,255,0.05)',
             display: 'flex',
             flexDirection: 'column',
-            gap: '15px'
+            gap: '15px',
+            position: 'relative'
           }}>
+            <div style={{ position: 'relative' }}>
+              <motion.div
+                whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                onClick={() => setShowLang(!showLang)}
+                style={{
+                  width: '100%',
+                  height: '50px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: isOpen ? 'flex-start' : 'center',
+                  padding: isOpen ? '0 20px' : '0',
+                  borderRadius: '18px',
+                  cursor: 'pointer',
+                  color: '#fff',
+                  background: 'rgba(255,255,255,0.03)',
+                  transition: 'all 0.3s'
+                }}
+              >
+                <Globe size={24} weight="regular" />
+                {isOpen && <span style={{ marginLeft: '15px', fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>{languages.find(l => l.code === language)?.label}</span>}
+              </motion.div>
+
+              <AnimatePresence>
+                {showLang && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    style={{
+                      position: 'absolute',
+                      left: 'calc(100% + 15px)',
+                      bottom: 0,
+                      background: 'rgba(15, 15, 20, 0.95)',
+                      backdropFilter: 'blur(20px)',
+                      borderRadius: '15px',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      padding: '10px',
+                      minWidth: '150px',
+                      zIndex: 1000,
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+                    }}
+                  >
+                    {languages.map((lang) => (
+                      <div
+                        key={lang.code}
+                        onClick={() => {
+                          setLanguage(lang.code);
+                          setShowLang(false);
+                        }}
+                        style={{
+                          padding: '10px 15px',
+                          borderRadius: '10px',
+                          cursor: 'pointer',
+                          color: language === lang.code ? 'var(--accent-color)' : '#fff',
+                          fontSize: '12px',
+                          fontWeight: 600,
+                          transition: 'all 0.2s',
+                          textTransform: 'uppercase',
+                          letterSpacing: '1px',
+                          fontFamily: "'Unbounded', sans-serif"
+                        }}
+                        className="hover:bg-white/5"
+                      >
+                        {lang.label}
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <motion.div
               whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
               onClick={openSettings}
@@ -408,7 +604,7 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
               }}
             >
               <Gear size={24} weight="regular" />
-              {isOpen && <span style={{ marginLeft: '15px', fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>Settings</span>}
+              {isOpen && <span style={{ marginLeft: '15px', fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>{t('settings')}</span>}
             </motion.div>
 
             <motion.div
