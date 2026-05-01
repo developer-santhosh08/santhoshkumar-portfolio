@@ -191,10 +191,6 @@ h6 {
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
-
-    .hide-mobile-bg {
-        display: none !important;
-    }
 }
 
 h1 {
@@ -545,8 +541,21 @@ h6 {
 }
 
 @media (max-width: 642px) {
-    .hero-aurora-glow, .hero-aurora-pinch, .hero-aurora-beam {
-        display: none !important;
+    .hero-aurora-glow {
+        width: 150%;
+        height: 400px;
+        filter: blur(60px);
+        opacity: 0.4;
+    }
+    
+    .hero-aurora-pinch {
+        filter: blur(20px);
+        opacity: 0.5;
+    }
+
+    .hero-aurora-beam {
+        box-shadow: 0 0 15px 2px #fff, 0 0 50px 10px rgba(var(--accent-color-rgb), 0.3);
+        opacity: 0.3;
     }
 }
 

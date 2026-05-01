@@ -5,7 +5,7 @@ const Background = ({ videoSrc }) => {
 
   return (
     <div 
-      className="bg-video-container hide-mobile-bg" 
+      className="bg-video-container" 
       style={{
         position: 'fixed',
         top: 0,

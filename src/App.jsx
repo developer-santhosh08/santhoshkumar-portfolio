@@ -71,11 +71,11 @@ function App() {
       document.body.classList.remove('light-mode');
     }
 
-    // Hide loader almost instantly for a high-performance feel
+    // Hide loader after 2 seconds to allow assets and brand to show
     const timer = setTimeout(() => {
       setIsLoading(false);
       document.body.classList.add('loaded');
-    }, 300);
+    }, 2000);
 
     // Scroll Spy Logic
     const sectionRatios = {};

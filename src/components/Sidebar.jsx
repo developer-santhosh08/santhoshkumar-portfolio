@@ -127,7 +127,7 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
                 initial={{ x: '100%', opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: '100%', opacity: 0 }}
-                transition={{ type: 'spring', damping: 25, stiffness: 180 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
                 className="fixed top-0 right-0 h-full w-[290px] sm:w-[330px] z-[20000001] shadow-2xl flex flex-col p-8 overflow-y-auto"
                 style={{ 
                   background: 'rgba(10, 10, 15, 0.85)',
@@ -276,7 +276,7 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
       <motion.div 
         initial={false}
         animate={{ width: isOpen ? 300 : 85 }}
-        transition={{ type: 'spring', damping: 20, stiffness: 150 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
         className={`dl-fixed-sidebar ${isOpen ? 'open' : ''}`}
         style={{
           position: 'fixed',
@@ -429,7 +429,7 @@ const Sidebar = ({ activeSection, theme, toggleTheme, openSettings, layout = 've
               }}
             >
               {isOpen ? <X size={24} weight="bold" /> : <SquaresFour size={28} weight="regular" />}
-              {isOpen && <span style={{ marginLeft: '15px', fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>Collapse</span>}
+              {isOpen && <span className="text-center" style={{ marginLeft: '15px', fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}></span>}
             </motion.div>
           </div>
         </div>
