@@ -3,8 +3,8 @@ import { useLanguage, translations } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 
 const Loader = () => {
-  const { t, language, isFirstVisit } = useLanguage();
-  const showTamil = language === 'ta' || isFirstVisit;
+  const { t, language } = useLanguage();
+  const showTamil = language === 'ta';
   
   // Custom translation helper for the loader
   const getLoaderText = (key) => {
