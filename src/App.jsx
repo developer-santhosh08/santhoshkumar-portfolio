@@ -79,7 +79,7 @@ function App() {
     // Tamil loader gets more time (6s) for the poetry/image
     const currentLang = localStorage.getItem('language') || 'en';
     const isFirstTime = !localStorage.getItem('hasVisited'); 
-    const loadingTime = (currentLang === 'ta' || isFirstTime) ? 6000 : 2000;
+    const loadingTime = currentLang === 'ta' ? 6000 : 2000;
     
     const timer = setTimeout(() => {
       setIsLoading(false);
