@@ -188,6 +188,16 @@ const Portfolio = () => {
       tags: ['PHP', 'CodeIgniter3'],
       color: '#ef4444'
     },
+    {
+      id: 8,
+      title: 'Photography Website',
+      category: 'website',
+      categoryLabel: 'Photography',
+      url: '#',
+      image: '/img/projects/photography.png',
+      tags: ['Website', 'Photography'],
+      color: '#8b5cf6'
+    },
     // { 
     //   id: 8, 
     //   title: 'Ahattrickz Info Tech Pvt. Ltd', 
